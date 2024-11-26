@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application>
-      <meta-data
+      <!-- <meta-data
         android:name="com.google.android.gms.ads.APPLICATION_ID"
         android:value="${appJSONGoogleMobileAdsAppID}"/>
       <meta-data
@@ -19,7 +19,7 @@
         android:value="${appJSONGoogleMobileAdsOptimizeInitialization}"/>
       <meta-data
         android:name="com.google.android.gms.ads.flag.OPTIMIZE_AD_LOADING"
-        android:value="${appJSONGoogleMobileAdsOptimizeAdLoading}"/>
+        android:value="${appJSONGoogleMobileAdsOptimizeAdLoading}"/> -->
 
       <!-- This may generate a warning during your build:
 

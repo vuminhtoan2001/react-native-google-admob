@@ -19,14 +19,14 @@ import android.os.Looper;
 
 import java.io.IOException;
 
-class Person {
+class ItemLog {
     private String url;
     private String time;
     private String params;
 
 
     // Constructor, getters and setters
-    public Person(String url, String time, String params) {
+    public ItemLog(String url, String time, String params) {
       this.url = url;
       this.time = time;
       this.params = params;
@@ -91,11 +91,11 @@ public class PushLog {
   
     ObjectMapper mapper = new ObjectMapper();
   
-    Person person = new Person(name, formattedTime, params);
+    ItemLog itemLog = new ItemLog(name, formattedTime, params);
     
     ObjectWriter writer = mapper.writerWithDefaultPrettyPrinter();
     // Chuyển đổi đối tượng thành chuỗi JSON
-    String jsonString = mapper.writeValueAsString(person);
+    String jsonString = mapper.writeValueAsString(itemLog);
 
     // Tạo payload cho request
     ObjectNode payload = mapper.createObjectNode();
