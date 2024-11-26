@@ -127,6 +127,7 @@ repositories {
 dependencies {
   implementation("com.google.android.gms:play-services-ads:${googleMobileAdsVersion}")
   api "com.google.android.ump:user-messaging-platform:${googleUmpVersion}"
+  implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.3' // pushlog to slack
 }
 
 ReactNative.shared.applyPackageVersion()

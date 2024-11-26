@@ -51,6 +51,9 @@ import javax.annotation.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+import com.ammarahmed.rnadmob.nativeads.PushLog;
+
 public class ReactNativeGoogleMobileAdsBannerAdViewManager
     extends SimpleViewManager<ReactNativeAdView> {
   private static final String REACT_CLASS = "RNGoogleMobileAdsBannerView";
@@ -88,6 +91,8 @@ public class ReactNativeGoogleMobileAdsBannerAdViewManager
       @NonNull ReactNativeAdView reactViewGroup, String commandId, @Nullable ReadableArray args) {
     super.receiveCommand(reactViewGroup, commandId, args);
 
+
+    Log.d("AdMobDeviceId", "commandId: " + commandId);
     if (commandId.equals(COMMAND_ID_RECORD_MANUAL_IMPRESSION)) {
       BaseAdView adView = getAdView(reactViewGroup);
       if (adView instanceof AdManagerAdView) {
@@ -102,6 +107,8 @@ public class ReactNativeGoogleMobileAdsBannerAdViewManager
 
   @ReactProp(name = "unitId")
   public void setUnitId(ReactNativeAdView reactViewGroup, String value) {
+    Log.d("AdMobDeviceId", "setUnitId: " + value);
+    PushLog.pushLogDebug("pushLogDebug:", value);
     reactViewGroup.setUnitId(value);
     reactViewGroup.setPropsChanged(true);
   }

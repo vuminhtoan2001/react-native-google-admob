@@ -39,6 +39,7 @@ export const BaseAd = React.forwardRef<
   const debouncedSetDimensions = debounce(setDimensions, 100);
 
   useEffect(() => {
+    console.log('Chạy vào đây BaseAs');
     if (!unitId) {
       throw new Error("BannerAd: 'unitId' expected a valid string unit ID.");
     }

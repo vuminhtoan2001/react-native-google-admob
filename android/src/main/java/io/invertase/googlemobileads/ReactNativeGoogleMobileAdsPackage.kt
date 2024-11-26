@@ -22,6 +22,14 @@ import com.facebook.react.bridge.NativeModule
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.uimanager.ViewManager
 
+import com.ammarahmed.rnadmob.nativeads.RNAdmobNativeAdsManager;
+import com.ammarahmed.rnadmob.nativeads.RNAdmobNativeViewManager;
+import com.ammarahmed.rnadmob.nativeads.RNAdmobMediaViewManager;
+import com.ammarahmed.rnadmob.nativeads.RNAdmobComponentsWrapperManager;
+import com.ammarahmed.rnadmob.nativeads.RNAdmobAdChoicesManager;
+import com.ammarahmed.rnadmob.nativeads.RNAdmobButtonManager;
+
+
 @SuppressWarnings("unused")
 class ReactNativeGoogleMobileAdsPackage : ReactPackage {
   override fun createNativeModules(reactContext: ReactApplicationContext) = listOf(
@@ -31,12 +39,20 @@ class ReactNativeGoogleMobileAdsPackage : ReactPackage {
     ReactNativeGoogleMobileAdsAppOpenModule(reactContext),
     ReactNativeGoogleMobileAdsInterstitialModule(reactContext),
     ReactNativeGoogleMobileAdsRewardedModule(reactContext),
-    ReactNativeGoogleMobileAdsRewardedInterstitialModule(reactContext)
+    ReactNativeGoogleMobileAdsRewardedInterstitialModule(reactContext),
+    RNAdmobNativeAdsManager(reactContext)
   )
 
   override fun createViewManagers(
     reactContext: ReactApplicationContext
   ): List<ViewManager<*, *>> {
-    return listOf(ReactNativeGoogleMobileAdsBannerAdViewManager())
+    return listOf(
+      ReactNativeGoogleMobileAdsBannerAdViewManager(),
+      RNAdmobNativeViewManager(),
+      RNAdmobMediaViewManager(),
+      RNAdmobComponentsWrapperManager(),
+      RNAdmobAdChoicesManager(),
+      RNAdmobButtonManager()
+    )
   }
 }
