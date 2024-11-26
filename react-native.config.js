@@ -2,7 +2,11 @@ module.exports = {
   dependency: {
     platforms: {
       android: {
-        packageImportPath: 'import io.invertase.googlemobileads.ReactNativeGoogleMobileAdsPackage;',
+        packageImportPath: `import io.invertase.googlemobileads.ReactNativeGoogleMobileAdsPackage;
+import com.ammarahmed.rnadmob.nativeads.RNAdMobNativePackage;`,
+        packageInstance: `new ReactNativeGoogleMobileAdsPackage(), 
+        new RNAdMobNativePackage()
+        `,
       },
       ios: {
         scriptPhases: [
