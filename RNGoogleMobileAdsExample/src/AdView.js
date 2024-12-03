@@ -15,7 +15,7 @@ import {
   StarRatingView,
   StoreView,
   TaglineView,
-} from 'react-native-google-mobile-ads';
+} from 'react-native-google-ads-admob';
 import {MediaView} from './MediaView';
 import {Events, Logger} from './utils';
 

@@ -1,5 +1,5 @@
 {
-  "name": "react-native-google-mobile-ads",
+  "name": "react-native-google-ads-admob",
   "version": "14.4.2",
   "author": "Invertase <oss@invertase.io> (http://invertase.io)",
   "description": "React Native Google Mobile Ads is an easy way to monetize mobile apps with targeted, in-app advertising.",
@@ -9,7 +9,7 @@
   "types": "lib/typescript/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/invertase/react-native-google-mobile-ads"
+    "url": "https://github.com/invertase/react-native-google-ads-admob"
   },
   "license": "Apache-2.0",
   "keywords": [

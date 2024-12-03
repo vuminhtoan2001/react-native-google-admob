@@ -32,7 +32,7 @@ import MobileAds, {
   GAMBannerAd,
   RewardedInterstitialAd,
   useRewardedInterstitialAd,
-} from 'react-native-google-mobile-ads';
+} from 'react-native-google-ads-admob';
 
 const appOpen = AppOpenAd.createForAdRequest(TestIds.APP_OPEN, {
   requestNonPersonalizedAdsOnly: true,

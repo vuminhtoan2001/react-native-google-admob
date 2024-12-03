@@ -9,7 +9,7 @@ import {
   View,
   NativeModules,
 } from 'react-native';
-import {AdManager} from 'react-native-google-mobile-ads';
+import {AdManager} from 'react-native-google-ads-admob';
 import {AdView} from './src/AdView';
 import List from './src/List';
 import {routes} from './src/utils';
