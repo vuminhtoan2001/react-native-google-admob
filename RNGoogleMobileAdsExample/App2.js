@@ -36,8 +36,6 @@ const App = () => {
     init();
   }, []);
 
-  console.log('routes', routes);
-
   return (
     <SafeAreaView
       style={{
@@ -81,6 +79,7 @@ const App = () => {
         <View
           style={{
             alignItems: 'center',
+            width: '100%',
           }}>
           <View
             style={{
@@ -187,25 +186,10 @@ const App = () => {
           alignItems: 'center',
           height: 50,
           justifyContent: 'center',
-          borderRadius: 100,
+          borderRadius: 10,
           backgroundColor: 'red',
         }}>
-        <Text>openAdInspector</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() =>
-          AdManager.openDebugMenu('ca-app-pub-5904408074441373/3241660524')
-        }
-        activeOpacity={0.8}
-        style={{
-          width: '90%',
-          alignItems: 'center',
-          height: 50,
-          justifyContent: 'center',
-          borderRadius: 100,
-          backgroundColor: 'red',
-        }}>
-        <Text>openDebugMenu</Text>
+        <Text style={{color: 'white'}}>openAdInspector</Text>
       </TouchableOpacity>
 
       {currentRoute?.type === 'banner' && (

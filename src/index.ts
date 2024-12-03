@@ -49,8 +49,6 @@ export { RevenuePrecisions } from './common/constants';
 export * from './types';
 
 // Naitve Ads
-
-
 export { default as IconView } from './adsNative/IconView';
 export { default as CallToActionView } from './adsNative/CallToActionView';
 export { default as HeadlineView } from './adsNative/HeadlineView';
@@ -65,13 +63,3 @@ export { default as AdBadge } from "./adsNative/AdBadge";
 export { default as NativeAdView } from './adsNative';
 export { AdOptions } from "./adsNative/utils";
 export { default as AdManager } from "./adsNative/AdManager";
-
-
-
-
-
-
-
-
-
-

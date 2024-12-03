@@ -19,25 +19,8 @@ import {
 import {MediaView} from './MediaView';
 import {Events, Logger} from './utils';
 
-const LogOnSlack = async paramsLog => {
-  const payload = {
-    text: JSON.stringify(paramsLog, null, 2),
-  };
-
-  await fetch(
-    'https://hooks.slack.com/services/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',
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-    },
-  );
-};
-
 export const AdView = React.memo(
-  ({index = 0, media, type, unitId, loadOnMount = true}) => {
+  ({index = 5, media, type, unitId, loadOnMount = true}) => {
     const [aspectRatio, setAspectRatio] = useState(1.5);
     const [loading, setLoading] = useState(false);
     const [loaded, setLoaded] = useState(false);
@@ -66,10 +49,6 @@ export const AdView = React.memo(
        * a few days until the ads will start showing.
        */
       Logger(`AD ${(index + 1) / 6 || ''}`, 'FAILED', event.error?.message);
-      LogOnSlack({
-        error: event,
-        unitId,
-      });
     };
 
     const onAdLoaded = () => {
@@ -90,19 +69,10 @@ export const AdView = React.memo(
         'IMPRESSION',
         'Ad impression recorded',
       );
-      LogOnSlack({
-        title: 'Ad impression recorded',
-        unitId,
-      });
     };
 
     const onNativeAdLoaded = event => {
-      Logger(
-        `AD ${(index + 1) / 6 || ''}`,
-        'RECIEVED',
-        'Unified ad  Recieved',
-        event,
-      );
+      Logger(`AD ${(index + 1) / 6 || ''}`, 'RECIEVED', event, event);
       setLoading(false);
       setLoaded(true);
       setError(false);
@@ -142,7 +112,10 @@ export const AdView = React.memo(
         }}
         // adUnitID={type === 'image' ? adUnitIDs.image : adUnitIDs.video} // REPLACE WITH NATIVE_AD_VIDEO_ID for video ads.
         // repository={type === 'image' ? 'imageAd' : 'videoAd'}
-        adUnitID={unitId || 'ca-app-pub-3940256099942544/2247696110'}>
+        adUnitID={
+          'ca-app-pub-5904408074441373/9807068871' ||
+          'ca-app-pub-3940256099942544/2247696110'
+        }>
         <View
           style={{
             width: '100%',

@@ -24,5 +24,8 @@
       <meta-data
           android:name="com.google.android.gms.ads.APPLICATION_ID"
           android:value="ca-app-pub-3940256099942544~3347511713"/>
+      <meta-data
+        android:name="applovin.sdk.key"
+        android:value="QaAezN7ygue2ntps0v8ps_eqaD9xpIlK_xH3-CWvfStCXdsN3kcF8Ffu3hWBt6X-gNueOSxX_w0179wXScblcs"/>
     </application>
 </manifest>

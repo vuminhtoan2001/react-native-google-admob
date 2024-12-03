@@ -112,6 +112,13 @@ dependencies {
     androidTestImplementation(project(path: ":detox"))
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
+     
+    //mediation
+    implementation  'com.google.ads.mediation:applovin:13.0.1.0'
+    implementation  'com.google.ads.mediation:vungle:7.4.2.0'
+    implementation  'com.google.ads.mediation:facebook:6.18.0.0'
+    implementation  'com.google.ads.mediation:mintegral:16.8.61.0'
+    implementation  'com.google.ads.mediation:pangle:6.3.0.4.0'
 
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
