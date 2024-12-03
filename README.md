@@ -19,7 +19,7 @@
 
 ---
 
-**React Native Google Mobile Ads** allows you to monetize your app with AdMob; a React Native wrapper around the native Google-Mobile-Ads SDKs for both iOS and Android.
+**react-native-google-ads-admob** is made up of 2 libraries [react-native-google-mobile-ads](https://docs.page/invertase/react-native-google-mobile-ads) and [react-native-admob-native-ads](https://ammarahm-ed.github.io/react-native-admob-native-ads/docs/introduction/).
 
 React Native Google Mobile Ads is built with three key principals in mind;
 
@@ -31,6 +31,7 @@ React Native Google Mobile Ads is built with three key principals in mind;
   - full reference & installation documentation alongside detailed guides and FAQs
 
 ## Migrating to the New Architecture Status (backwards compatible)
+
 This package can be used in both The Old and [The New Architecture](https://reactnative.dev/docs/the-new-architecture/landing-page).
 When using The New Architecture, some legacy code will still be used though. See status below:
 

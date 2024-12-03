@@ -1,42 +1,19 @@
-import React, { Component } from "react";
-import {
-  findNodeHandle,
-  Platform,
-  requireNativeComponent,
-  UIManager,
-} from "react-native";
-import { defaultAd, NativeAdContext } from "./context";
-import { AdOptions } from "./utils";
-import Wrapper from "./Wrapper";
+import React, { Component } from 'react';
+import { findNodeHandle, Platform, requireNativeComponent, UIManager } from 'react-native';
+import { defaultAd, NativeAdContext } from './context';
+import { AdOptions } from './utils';
+import Wrapper from './Wrapper';
 
 const testNativeAd = {
-  headline: "Test Ad: Lorem ipsum dolor ",
-  tagline:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
-  advertiser: "Laboris Nisi",
-  store: Platform.OS === "ios" ? "AppStore" : "Google Play",
+  headline: 'Test Ad: Lorem ipsum dolor ',
+  tagline: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+  advertiser: 'Laboris Nisi',
+  store: Platform.OS === 'ios' ? 'AppStore' : 'Google Play',
   video: false,
   rating: 4.5,
-  price: "$1",
-  icon: "https://dummyimage.com/300.png/09f/fff",
-  images: [{ url: "https://dummyimage.com/qvga" }],
-};
-
-const LogOnSlack = async (paramsLog) => {
-  const payload = {
-    text: JSON.stringify(paramsLog, null, 2),
-  };
-
-  await fetch(
-    "https://hooks.slack.com/services/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",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    }
-  );
+  price: '$1',
+  icon: 'https://dummyimage.com/300.png/09f/fff',
+  images: [{ url: 'https://dummyimage.com/qvga' }],
 };
 
 export class NativeAdView extends Component {
@@ -51,50 +28,39 @@ export class NativeAdView extends Component {
     this.delayDuration = 0;
     this.componentMounted = false;
     this.ad = defaultAd;
-    this.timeload = new Date();
   }
 
-  _onAdFailedToLoad = (event) => {
+  _onAdFailedToLoad = event => {
     if (this.props.onAdFailedToLoad) {
       this.props.onAdFailedToLoad(event.nativeEvent?.error);
     }
   };
 
-  _onAdLoaded = (event) => {
+  _onAdLoaded = event => {
     if (this.props.onAdLoaded) {
       this.props.onAdLoaded(event.nativeEvent);
-      LogOnSlack({
-        title: "Tải xong quảng cáo",
-        time: new Date(),
-        interval: new Date() - this.timeload,
-      });
     }
   };
 
-  _onAdClicked = (event) => {
+  _onAdClicked = event => {
     if (this.props.onAdClicked) this.props.onAdClicked(event.nativeEvent);
   };
 
-  _onAdImpression = (event) => {
+  _onAdImpression = event => {
     if (this.props.onAdImpression) {
       this.props.onAdImpression(event.nativeEvent);
-      LogOnSlack({
-        title: "Hiển thị xong quảng cáo",
-        time: new Date(),
-        interval: new Date() - this.timeload,
-      });
     }
   };
 
-  _onAdClosed = (event) => {
+  _onAdClosed = event => {
     if (this.props.onAdClosed) this.props.onAdClosed(event.nativeEvent);
   };
 
-  _onAdOpened = (event) => {
+  _onAdOpened = event => {
     if (this.props.onAdOpened) this.props.onAdOpened(event.nativeEvent);
   };
 
-  onNativeAdLoaded = (event) => {
+  onNativeAdLoaded = event => {
     this.ad = event.nativeEvent;
     if (this.ad.aspectRatio) {
       this.ad.aspectRatio = parseFloat(this.ad.aspectRatio);
@@ -104,7 +70,7 @@ export class NativeAdView extends Component {
       if (this.props.onUnifiedNativeAdLoaded) {
         this.props.onUnifiedNativeAdLoaded(this.ad);
         console.warn(
-          "[DEPRECATED] onUnifiedNativeAdLoaded is deprecated and will be removed in future versions. Use onNativeAdLoaded instead."
+          '[DEPRECATED] onUnifiedNativeAdLoaded is deprecated and will be removed in future versions. Use onNativeAdLoaded instead.',
         );
       }
       if (this.props.onNativeAdLoaded) {
@@ -113,9 +79,8 @@ export class NativeAdView extends Component {
     }
   };
 
-  _onAdLefApplication = (event) => {
-    if (this.props.onAdLeftApplication)
-      this.props.onAdLeftApplication(event.nativeEvent);
+  _onAdLefApplication = event => {
+    if (this.props.onAdLeftApplication) this.props.onAdLeftApplication(event.nativeEvent);
   };
 
   updateAd() {
@@ -141,7 +106,7 @@ export class NativeAdView extends Component {
     this.componentMounted = false;
   }
 
-  _getRef = (ref) => {
+  _getRef = ref => {
     this.nativeAdRef = ref;
     return this.nativeAdRef;
   };
@@ -149,14 +114,9 @@ export class NativeAdView extends Component {
   loadAd = () => {
     UIManager.dispatchViewManagerCommand(
       findNodeHandle(this.nativeAdRef),
-      UIManager.getViewManagerConfig("RNGADNativeView").Commands.loadAd,
-      undefined
+      UIManager.getViewManagerConfig('RNGADNativeView').Commands.loadAd,
+      undefined,
     );
-    LogOnSlack({
-      title: "Bắt đầu tải quảng cáo",
-      time: new Date(),
-    });
-    this.timeload = new Date();
   };
 
   render() {
@@ -175,22 +135,16 @@ export class NativeAdView extends Component {
           onAdClosed={this._onAdClosed}
           onAdImpression={this._onAdImpression}
           style={this.props.style}
-          mediaAspectRatio={
-            AdOptions.mediaAspectRatio[this.props.mediaAspectRatio]
-          }
+          mediaAspectRatio={AdOptions.mediaAspectRatio[this.props.mediaAspectRatio]}
           onNativeAdLoaded={this.onNativeAdLoaded}
-          requestNonPersonalizedAdsOnly={
-            this.props.requestNonPersonalizedAdsOnly
-          }
+          requestNonPersonalizedAdsOnly={this.props.requestNonPersonalizedAdsOnly}
           videoOptions={this.props.videoOptions}
           mediationOptions={this.props.mediationOptions}
           targetingOptions={this.props.targetingOptions}
-          adChoicesPlacement={
-            AdOptions.adChoicesPlacement[this.props.adChoicesPlacement]
-          }
+          adChoicesPlacement={AdOptions.adChoicesPlacement[this.props.adChoicesPlacement]}
         >
           <Wrapper
-            onLayout={(event) => {
+            onLayout={event => {
               this.setState({
                 nativeAdView: this.nativeAdRef,
               });
@@ -205,8 +159,8 @@ export class NativeAdView extends Component {
 }
 
 NativeAdView.defaultProps = {
-  mediaAspectRatio: "any",
-  adChoicesPlacement: "topRight",
+  mediaAspectRatio: 'any',
+  adChoicesPlacement: 'topRight',
   requestNonPersonalizedAdsOnly: false,
   videoOptions: {
     muted: false,
@@ -217,8 +171,8 @@ NativeAdView.defaultProps = {
   },
 };
 
-NativeAdView.simulatorId = "SIMULATOR";
+NativeAdView.simulatorId = 'SIMULATOR';
 
-const RNGADNativeView = requireNativeComponent("RNGADNativeView");
+const RNGADNativeView = requireNativeComponent('RNGADNativeView');
 
 export default NativeAdView;

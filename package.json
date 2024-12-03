@@ -1,7 +1,7 @@
 {
   "name": "react-native-google-ads-admob",
   "version": "14.4.2",
-  "author": "Invertase <oss@invertase.io> (http://invertase.io)",
+  "author": "tuyendungvgasoft <tuyendungvgasoft@gmail.com> (https://github.com/tuyendungvgasoft)",
   "description": "React Native Google Mobile Ads is an easy way to monetize mobile apps with targeted, in-app advertising.",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
