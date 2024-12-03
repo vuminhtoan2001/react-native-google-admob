@@ -66,8 +66,8 @@ To get started locally the following steps are required:
 ### Step 1: Clone the repository
 
 ```bash
-git clone https://github.com/invertase/react-native-google-mobile-ads.git
-cd react-native-google-mobile-ads
+git clone https://github.com/tuyendungvgasoft/react-native-google-ads-admob.git
+cd react-native-google-ads-admob
 ```
 
 ### Step 2: Install test project dependencies
